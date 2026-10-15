@@ -1,0 +1,971 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+	
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>cgi</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="data\textures\skybox\Clear4k\back.png" />
+    <None Remove="data\textures\skybox\Clear4k\bottom.png" />
+    <None Remove="data\textures\skybox\Clear4k\front.png" />
+    <None Remove="data\textures\skybox\Clear4k\left.png" />
+    <None Remove="data\textures\skybox\Clear4k\right.png" />
+    <None Remove="data\textures\skybox\Clear4k\top.png" />
+    <None Remove="data\textures\skybox\Cloudy4k\back.png" />
+    <None Remove="data\textures\skybox\Cloudy4k\bottom.png" />
+    <None Remove="data\textures\skybox\Cloudy4k\front.png" />
+    <None Remove="data\textures\skybox\Cloudy4k\left.png" />
+    <None Remove="data\textures\skybox\Cloudy4k\right.png" />
+    <None Remove="data\textures\skybox\Cloudy4k\top.png" />
+    <None Remove="data\textures\skybox\Cubemap4k\back.png" />
+    <None Remove="data\textures\skybox\Cubemap4k\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap4k\front.png" />
+    <None Remove="data\textures\skybox\Cubemap4k\left.png" />
+    <None Remove="data\textures\skybox\Cubemap4k\right.png" />
+    <None Remove="data\textures\skybox\Cubemap4k\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_01-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_01-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_01-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_01-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_01-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_01-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_02-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_02-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_02-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_02-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_02-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_02-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_03-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_03-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_03-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_03-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_03-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_03-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_04-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_04-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_04-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_04-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_04-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_04-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_05-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_05-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_05-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_05-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_05-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_05-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_06-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_06-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_06-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_06-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_06-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_06-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_07-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_07-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_07-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_07-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_07-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_07-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_08-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_08-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_08-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_08-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_08-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_08-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_09-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_09-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_09-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_09-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_09-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_09-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_10-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_10-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_10-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_10-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_10-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_10-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_11-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_11-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_11-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_11-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_11-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_11-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_12-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_12-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_12-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_12-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_12-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_12-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_13-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_13-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_13-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_13-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_13-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_13-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_14-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_14-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_14-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_14-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_14-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_14-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_15-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_15-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_15-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_15-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_15-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_15-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_16-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_16-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_16-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_16-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_16-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_16-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_17-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_17-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_17-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_17-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_17-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_17-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_18-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_18-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_18-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_18-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_18-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_18-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_19-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_19-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_19-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_19-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_19-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_19-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_20-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_20-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_20-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_20-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_20-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_20-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_21-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_21-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_21-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_21-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_21-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_21-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_22-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_22-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_22-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_22-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_22-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_22-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_23-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_23-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_23-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_23-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_23-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_23-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_24-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_24-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_24-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_24-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_24-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_24-512x512\top.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_25-512x512\back.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_25-512x512\bottom.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_25-512x512\front.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_25-512x512\left.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_25-512x512\right.png" />
+    <None Remove="data\textures\skybox\Cubemap_Sky_25-512x512\top.png" />
+    <None Remove="data\textures\skybox\Epic4k\back.png" />
+    <None Remove="data\textures\skybox\Epic4k\bottom.png" />
+    <None Remove="data\textures\skybox\Epic4k\front.png" />
+    <None Remove="data\textures\skybox\Epic4k\left.png" />
+    <None Remove="data\textures\skybox\Epic4k\right.png" />
+    <None Remove="data\textures\skybox\Epic4k\top.png" />
+    <None Remove="data\textures\skybox\skybox.jpg" />
+    <None Remove="data\textures\skybox\Sunrise4k\back.png" />
+    <None Remove="data\textures\skybox\Sunrise4k\bottom.png" />
+    <None Remove="data\textures\skybox\Sunrise4k\front.png" />
+    <None Remove="data\textures\skybox\Sunrise4k\left.png" />
+    <None Remove="data\textures\skybox\Sunrise4k\right.png" />
+    <None Remove="data\textures\skybox\Sunrise4k\top.png" />
+    <None Remove="game_objects\Gerstner_FS.glsl" />
+    <None Remove="game_objects\Gerstner_VS.glsl" />
+    <None Remove="game_objects\particles\Spray_CS.glsl" />
+    <None Remove="shaders\2DIFFT_Horizontal.glsl" />
+    <None Remove="shaders\2DIFFT_Permute.glsl" />
+    <None Remove="shaders\2DIFFT_Vertical.glsl" />
+    <None Remove="shaders\BlurShader.glsl" />
+    <None Remove="shaders\BuoyancySampleShader.glsl" />
+    <None Remove="shaders\buoyancy\debug\Debug_FS.glsl" />
+    <None Remove="shaders\crate.png" />
+    <None Remove="shaders\FFT_FS.glsl" />
+    <None Remove="shaders\FFT_VS.glsl" />
+    <None Remove="shaders\foam\foam03.jpg" />
+    <None Remove="shaders\foam\foam04.jpg" />
+    <None Remove="shaders\GaussianNoiseTexture256x256.png" />
+    <None Remove="shaders\InitializeSpectrum.glsl" />
+    <None Remove="shaders\mist_particle.png" />
+    <None Remove="shaders\perlin-worly.jpg" />
+    <None Remove="shaders\perlin.png" />
+    <None Remove="shaders\postProcessing\BloomCombine_CS.glsl" />
+    <None Remove="shaders\postProcessing\BrightPass_CS.glsl" />
+    <None Remove="shaders\postProcessing\HorizontalGaussianBlur_CS.glsl" />
+    <None Remove="shaders\postProcessing\VerticalGaussianBlur_CS.glsl" />
+    <None Remove="shaders\sprayTexture00.png" />
+    <None Remove="shaders\sprayTexture01.png" />
+    <None Remove="shaders\sprayTexture02.png" />
+    <None Remove="shaders\sprayTexture03.png" />
+    <None Remove="shaders\spray\AccumulateSpray.glsl" />
+    <None Remove="shaders\spray\Spray_FS.glsl" />
+    <None Remove="shaders\spray\Spray_VS.glsl" />
+    <None Remove="shaders\spray\UpdateDeleteSpray.glsl" />
+    <None Remove="shaders\tessellation\FFT_Tess_FS.glsl" />
+    <None Remove="shaders\tessellation\FFT_Tess_TES.glsl" />
+    <None Remove="shaders\tessellation\Gerstner_Tess_FS.glsl" />
+    <None Remove="shaders\tessellation\Gerstner_Tess_TES.glsl" />
+    <None Remove="shaders\tessellation\Tess_VS.glsl" />
+    <None Remove="shaders\TextureJoin.glsl" />
+    <None Remove="shaders\TimeEvolution.glsl" />
+    <None Remove="shaders\TwiddlePrecompute.glsl" />
+    <None Remove="shaders\waternormals.jpg" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\engine\engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="model\" />
+    <Folder Include="Properties" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="data\objects\skybox.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\objects\skybox2.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Clear4k\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Clear4k\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Clear4k\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Clear4k\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Clear4k\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Clear4k\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cloudy4k\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cloudy4k\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cloudy4k\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cloudy4k\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cloudy4k\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cloudy4k\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap4k\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap4k\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap4k\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap4k\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap4k\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap4k\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_01-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_01-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_01-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_01-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_01-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_01-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_02-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_02-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_02-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_02-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_02-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_02-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_03-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_03-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_03-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_03-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_03-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_03-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_04-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_04-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_04-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_04-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_04-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_04-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_05-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_05-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_05-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_05-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_05-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_05-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_06-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_06-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_06-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_06-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_06-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_06-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_07-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_07-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_07-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_07-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_07-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_07-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_08-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_08-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_08-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_08-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_08-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_08-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_09-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_09-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_09-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_09-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_09-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_09-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_10-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_10-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_10-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_10-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_10-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_10-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_11-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_11-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_11-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_11-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_11-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_11-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_12-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_12-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_12-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_12-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_12-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_12-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_13-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_13-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_13-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_13-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_13-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_13-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_14-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_14-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_14-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_14-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_14-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_14-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_15-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_15-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_15-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_15-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_15-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_15-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_16-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_16-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_16-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_16-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_16-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_16-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_17-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_17-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_17-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_17-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_17-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_17-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_18-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_18-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_18-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_18-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_18-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_18-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_19-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_19-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_19-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_19-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_19-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_19-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_20-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_20-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_20-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_20-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_20-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_20-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_21-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_21-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_21-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_21-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_21-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_21-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_22-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_22-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_22-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_22-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_22-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_22-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_23-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_23-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_23-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_23-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_23-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_23-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_24-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_24-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_24-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_24-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_24-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_24-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_25-512x512\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_25-512x512\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_25-512x512\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_25-512x512\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_25-512x512\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Cubemap_Sky_25-512x512\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\down.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\east.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Epic4k\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Epic4k\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Epic4k\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Epic4k\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Epic4k\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Epic4k\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\north.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\skybox.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\south.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Sunrise4k\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Sunrise4k\bottom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Sunrise4k\front.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Sunrise4k\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Sunrise4k\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\Sunrise4k\top.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\up.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\textures\skybox\west.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\buoyancy\debug\Debug_FS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\mist_particle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\postProcessing\BloomCombine_CS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\postProcessing\VerticalGaussianBlur_CS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\postProcessing\HorizontalGaussianBlur_CS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\postProcessing\BrightPass_CS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\sprayTexture00.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\sprayTexture01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\sprayTexture02.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\sprayTexture03.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\spray\UpdateDeleteSpray.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\spray\AccumulateSpray.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\spray\Spray_CS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\buoyancy\BuoyancySampleShader.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\crate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\IFFT\2DIFFT_Vertical.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\IFFT\2DIFFT_Horizontal.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\foam\foam03.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\foam\foam04.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\spray\Spray_FS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\spray\Spray_VS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\tessellation\FFT\FFT_Tess_FS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\tessellation\Gerstner\Gerstner_Tess_FS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\tessellation\FFT\FFT_Tess_TES.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\tessellation\Tess_VS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\tessellation\Gerstner\Gerstner_Tess_TES.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\tessellation\Tess_TCS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\BlurShader.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\TextureJoin.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\IFFT\TwiddlePrecompute.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\IFFT\2DIFFT_Permute.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\TimeEvolution.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\InitializeSpectrum.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\FFT_FS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\FFT_VS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\Gerstner_FS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\Gerstner_VS.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\perlin-worly.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\perlin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="shaders\waternormals.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="shaders\GaussianNoiseTexture256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
